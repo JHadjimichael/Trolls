@@ -5,6 +5,7 @@ public class TrollDriver
    public static void main(String[] args) throws Exception
    {
       //Set Panel to TrollPanel
+      //Set window attribut to non-rescalable
    }
  
 }

@@ -3,11 +3,29 @@ import java.awt.*;
 import java.awt.event.*;
 public class TrollPanel extends JPanel
 {
-   private JLabel label1, label2;
-   private JTextField box;
-   private int number, count, its=0;
-   public Panel03()
+   private JButton[][] graphic;
+   private int[][] board;
+   private JLabel title;
+   private JButton quit;
+   public TrollPanel()
    {
-      //fill
+      //SetLayout
+      
+      //Set layout aras to panels
+      
+      //Define board and graphics
+      
+      //Define Buttons
+      
+      //Define Movement Keys
+      
+      //Enemy AI + Movement
+   }
+   private class Handler implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+      	//Quite Button
+      }
    }
 }
