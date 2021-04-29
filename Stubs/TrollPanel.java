@@ -36,7 +36,7 @@ public class TrollPanel extends JPanel
    {
       return -1;
    }
-   private void createents(int[][] board)
+   private void createents(Block[][] board)
    {
       //Create entities and place them on the board
    }
@@ -46,7 +46,7 @@ public class TrollPanel extends JPanel
    }
    private void setup_movement()
    {
-      //Create a button with this name
+      //Bind keypresses to player movement, which leads to everything moving.
+      //Redraw the screen to show new positions
    }
-}
 }

@@ -6,5 +6,7 @@ public class Troll extends Block implements Entities {
 
    public void Move() {
       //will have specific movements to Troll
+      //Gets called by player moving, "their eyesight is based on movement".
+      //Returns 0 or 1
    }
 }

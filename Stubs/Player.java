@@ -8,6 +8,7 @@ public class Player extends Block implements Entities {
 
    public void Move() {
       //will have specific movements to Player
+      //Also calls troll movement, if returned a 1, game over
    }
    public int[] getxy()
    {
