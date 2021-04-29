@@ -4,7 +4,7 @@
 //To initialize the game, it will create an empty 2d array of Blocks, the default object.
 //Next, it will populate the array at random locations with trolls, and the player is placed at a random location. 
 //The TrollPanel then creates a button, for now just using a name.  This button is quit.
-//Finally the TrollPanel binds and setsthe handler and listener for the keypresses that control the player.
+//Finally the TrollPanel binds and sets the handler and listener for the keypresses that control the player.
 
 //Author: Jordan Hadjimichael
 //Date: 4/28/2021
