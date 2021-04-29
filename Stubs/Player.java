@@ -1,12 +1,17 @@
 import java.math.*;
 
 public class Player implements Entities {
-    public Player() {
-        int destruction;
-        int move_speed;
-    }
+   public Player() {
+      int destruction;
+      int move_speed;
+   }
 
-    public void Move() {
-        //will have specific movements to Player
-    }
+   public void Move() {
+      //will have specific movements to Player
+   }
+   public int[] getxy()
+   {
+      //Return x y coords
+      return new int[1];
+   } 
 }
