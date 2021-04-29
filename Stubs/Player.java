@@ -1,6 +1,6 @@
 import java.math.*;
 
-public class Player implements Entities {
+public class Player extends Block implements Entities {
    public Player() {
       int destruction;
       int move_speed;

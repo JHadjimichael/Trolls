@@ -1,4 +1,4 @@
-public class Troll implements Entities {
+public class Troll extends Block implements Entities {
    public Troll() {
       int destruction;
       int move_speed;

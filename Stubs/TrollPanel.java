@@ -4,7 +4,7 @@ import java.awt.event.*;
 public class TrollPanel extends JPanel
 {
    private JPanel[][] graphic;
-   private int[][] board;
+   private Block[][] board;
    private JLabel title;
    private JButton quit;
    public TrollPanel()
@@ -24,8 +24,6 @@ public class TrollPanel extends JPanel
       //Define Movement Keys
       setup_movement();
       
-      //Enemy AI + Movement
-      setup_enemy_AI
    }
    private class Handler implements ActionListener
    {
