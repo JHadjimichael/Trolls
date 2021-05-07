@@ -7,7 +7,7 @@
 
 
 public class Troll extends Block implements Entities {
-   public Troll() {
+   public Troll(Block[][] world) {
       //No variables
    }
 

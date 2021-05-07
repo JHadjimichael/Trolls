@@ -7,13 +7,18 @@
 
 import java.io.*;
 import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 public class TrollDriver
 {
    public static void main(String[] args) throws Exception
    {
-      //Set attributes
-      //Set Panel to TrollPanel
-      //Set window attribute to non-rescalable
+      JFrame frame = new JFrame("TROLLS");
+      frame.setSize(600, 600);
+      frame.setLocation(200, 100);
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      frame.setContentPane(new TrollPanel());
+      frame.setVisible(true);
+      frame.setResizable(false);
    }
  
 }
