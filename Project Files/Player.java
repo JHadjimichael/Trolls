@@ -10,7 +10,7 @@
 import java.math.*;
 
 public class Player extends Block implements Entities {
-   public Player() {
+   public Player(Block[][] world) {
    //No Variables
    }
 
