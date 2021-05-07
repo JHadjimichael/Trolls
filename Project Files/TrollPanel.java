@@ -10,10 +10,10 @@
 //Date: 4/28/2021
 
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Random;
 public class TrollPanel extends JPanel
 {
    private JPanel[][] graphic;
@@ -48,14 +48,27 @@ public class TrollPanel extends JPanel
       	//Quit Button
       }
    }
-   private int initialize()
+   private void initialize()
    {
-      //Initilizes the array. Returns -1 to compile.
-      return -1;
+      //Initializes the array. Returns -1 to compile.
+      Block[][] board = new Block[10][10];
    }
    private void createents(Block[][] board)
    {
-      //Create entities and place them on the board
+      Random rand = new Random();
+      for (int i = 0; i < 5; i++) {
+         int random_x = rand.nextInt(10);
+         int random_y = rand.nextInt(10);
+
+         while ((board[random_x][random_y] instanceof Troll) || ((random_x == 4) && (random_y == 0))) {
+            random_x = rand.nextInt(10);
+            random_y = rand.nextInt(10);
+         }
+         board[random_x][random_y] = new Troll(board);
+      }
+
+      board[4][0] = new Player(board);
+
    }
    private void createbuttons(String name)
    {
