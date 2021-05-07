@@ -56,18 +56,17 @@ public class TrollPanel extends JPanel
    private void createents(Block[][] board)
    {
       Random rand = new Random();
-      for (int i = 0; i < 5; i++) {
-         int random_x = rand.nextInt(10);
-         int random_y = rand.nextInt(10);
+      //for (int i = 0; i < 5; i++) {
+      int random_x = rand.nextInt(10);
+      int random_y = rand.nextInt(10);
+      board[1][2] = new Troll();
 
-         Class name = board[random_x][random_y].getClass();
-         System.out.println(name.getName());
          //while ((board[random_x][random_y] instanceof Troll) || ((random_x == 4) && (random_y == 0))) {
            // random_x = rand.nextInt(10);
             //random_y = rand.nextInt(10);
          //}
          //board[random_x][random_y] = new Troll(board);
-      }
+      //}
 
 
 
