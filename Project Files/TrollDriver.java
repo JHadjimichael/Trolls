@@ -17,8 +17,8 @@ public class TrollDriver
       frame.setLocation(200, 100);
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.setContentPane(new TrollPanel());
+      frame.setResizable(true);
       frame.setVisible(true);
-      frame.setResizable(false);
    }
  
 }

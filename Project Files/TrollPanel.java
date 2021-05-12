@@ -16,12 +16,18 @@ import java.awt.event.*;
 import java.util.Random;
 public class TrollPanel extends JPanel
 {
-   private JPanel[][] graphic;
+   private JButton[][] graphic;
    private Block[][] board;
    private JLabel title;
    private JButton quit;
+   private JPanel center;
    public TrollPanel()
-   {
+   {   
+      setLayout(new BorderLayout());
+      center = new JPanel();
+      center.setLayout(new GridLayout(10,10));
+      add(center, BorderLayout.CENTER);
+   
       //SetLayout
       setLayout(new BorderLayout());
       
@@ -35,7 +41,7 @@ public class TrollPanel extends JPanel
       createents(board);
       
       //Define Buttons
-      createbuttons("Reset");
+      createbuttons("Quit");
       
       //Define Movement Keys
       setup_movement();
@@ -91,17 +97,26 @@ public class TrollPanel extends JPanel
       
    private void createbuttons(String name)
    {
-      quit = new JButton("Quit");
+      quit = new JButton(name);
       quit.addActionListener(new Listener1());
    }
    private void setup_movement()
    {
-      //Bind keypresses to player movement, which leads to everything moving.
+      graphic = new JButton[10][10];
+      
+      for(int r = 0; r < 10; r++)
+         for(int c = 0; c < 10; c++)
+         {
+            graphic[r][c] = new JButton();
+            graphic[r][c].setBackground(Color.blue);
+            center.add(graphic[r][c]);
+            setVisible(true);
+         }
       
    }
    private void setTitle(String name)
    {
-      //Set the title to "name"
+      title = new JLabel(name);
    }
    private class Listener1 implements ActionListener
    {
