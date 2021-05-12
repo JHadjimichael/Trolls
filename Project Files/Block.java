@@ -13,5 +13,9 @@ public class Block {
    
    public Block() {
       //Blocks of the array
+   }
+   public int getNum()
+   {
+      return 0;
    } 
 }

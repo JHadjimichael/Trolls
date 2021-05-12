@@ -23,5 +23,9 @@ public class Player extends Block implements Entities {
    {
       //Return x y coords
       return new int[1];
+   }
+   public int getNum()
+   {
+      return 2;
    } 
 }

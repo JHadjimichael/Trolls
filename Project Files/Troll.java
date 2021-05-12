@@ -16,4 +16,8 @@ public class Troll extends Block implements Entities {
       //Gets called by player moving, "their eyesight is based on movement".
       //Returns 0 or 1 depending on collision with player
    }
+   public int getNum()
+   {
+      return 1;
+   }
 }

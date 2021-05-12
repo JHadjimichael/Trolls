@@ -51,30 +51,48 @@ public class TrollPanel extends JPanel
    private void initialize()
    {
       //Initializes the array. Returns -1 to compile.
-      Block[][] board = new Block[10][10];
+      board = new Block[10][];
+      
+      for(int i = 0; i<10; i++)
+      {
+         board[i] = new Block[] {new Block(), new Block(), new Block(), new Block(), new Block(), new Block(), new Block(), new Block(), new Block(), new Block()};
+      }
+      
    }
    private void createents(Block[][] board)
    {
       Random rand = new Random();
-      //for (int i = 0; i < 5; i++) {
       int random_x = rand.nextInt(10);
       int random_y = rand.nextInt(10);
-      board[1][2] = new Troll();
-
-         //while ((board[random_x][random_y] instanceof Troll) || ((random_x == 4) && (random_y == 0))) {
-           // random_x = rand.nextInt(10);
-            //random_y = rand.nextInt(10);
-         //}
-         //board[random_x][random_y] = new Troll(board);
-      //}
-
-
-
-      board[4][0] = new Player(board);
+      int count = 0;
+      
+   
+      while (board[random_x][random_y].getNum() != 1 || board[random_x][random_y].getNum() != 2) {
+         random_x = rand.nextInt(10);
+         random_y = rand.nextInt(10);
+         board[random_x][random_y] = new Troll();
+         count += 1;
+         if (count == 5)
+         {
+            break;
+         }
+      }
+      board[4][6] = new Player(board);
+      
+      for (int a = 0; a<10; a++)
+      {
+         for (int b = 0; b<10; b++)
+         {
+            System.out.print(board[a][b].getNum());
+         }
+         System.out.println(" ");
+      }
    }
+      
    private void createbuttons(String name)
    {
-      //Create a button with this name
+      quit = new JButton("Quit");
+      quit.addActionListener(new Listener1());
    }
    private void setup_movement()
    {
@@ -84,5 +102,12 @@ public class TrollPanel extends JPanel
    private void setTitle(String name)
    {
       //Set the title to "name"
+   }
+   private class Listener1 implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+         System.exit(0);
+      }
    }
 }

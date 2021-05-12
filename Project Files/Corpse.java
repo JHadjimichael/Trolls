@@ -11,4 +11,8 @@ public class Corpse extends Block {
    public Corpse() {
       //No Variables
    }
+   public int getNum()
+   {
+      return 3;
+   }
 }
