@@ -23,11 +23,6 @@ public class TrollPanel extends JPanel
    private JPanel center;
    public TrollPanel()
    {   
-      setLayout(new BorderLayout());
-      center = new JPanel();
-      center.setLayout(new GridLayout(10,10));
-      add(center, BorderLayout.CENTER);
-   
       //SetLayout
       setLayout(new BorderLayout());
       
@@ -102,16 +97,6 @@ public class TrollPanel extends JPanel
    }
    private void setup_movement()
    {
-      graphic = new JButton[10][10];
-      
-      for(int r = 0; r < 10; r++)
-         for(int c = 0; c < 10; c++)
-         {
-            graphic[r][c] = new JButton();
-            graphic[r][c].setBackground(Color.blue);
-            center.add(graphic[r][c]);
-            setVisible(true);
-         }
       
    }
    private void setTitle(String name)
@@ -125,4 +110,5 @@ public class TrollPanel extends JPanel
          System.exit(0);
       }
    }
+
 }
