@@ -21,10 +21,14 @@ public class TrollPanel extends JPanel
    private JLabel title;
    private JButton quit;
    private JPanel center;
+   private int R = 10;
+   private int C = 10;
    public TrollPanel()
-   {   
+   {  
+   
+    
       //SetLayout
-      setLayout(new BorderLayout());
+      
       
       //Set Title
       setTitle("Trolls");
@@ -41,6 +45,8 @@ public class TrollPanel extends JPanel
       //Define Movement Keys
       setup_movement();
       
+      updateScreen();
+      
    }
    private class Handler implements ActionListener
    {
@@ -52,25 +58,28 @@ public class TrollPanel extends JPanel
    private void initialize()
    {
       //Initializes the array. Returns -1 to compile.
-      board = new Block[10][];
+      board = new Block[R][C];
       
-      for(int i = 0; i<10; i++)
+      for(int i = 0; i<R; i++)
       {
-         board[i] = new Block[] {new Block(), new Block(), new Block(), new Block(), new Block(), new Block(), new Block(), new Block(), new Block(), new Block()};
+         for(int a = 0; a<C; a++)
+         {
+            board[i][a] = new Block();
+         }
       }
       
    }
    private void createents(Block[][] board)
    {
       Random rand = new Random();
-      int random_x = rand.nextInt(10);
-      int random_y = rand.nextInt(10);
+      int random_x = rand.nextInt(C);
+      int random_y = rand.nextInt(R);
       int count = 0;
       
    
       while (board[random_x][random_y].getNum() != 1 || board[random_x][random_y].getNum() != 2) {
-         random_x = rand.nextInt(10);
-         random_y = rand.nextInt(10);
+         random_x = rand.nextInt(C);
+         random_y = rand.nextInt(R);
          board[random_x][random_y] = new Troll();
          count += 1;
          if (count == 5)
@@ -78,11 +87,12 @@ public class TrollPanel extends JPanel
             break;
          }
       }
-      board[4][6] = new Player(board);
+      //make random
+      board[4][5] = new Player(board);
       
-      for (int a = 0; a<10; a++)
+      for (int a = 0; a<R; a++)
       {
-         for (int b = 0; b<10; b++)
+         for (int b = 0; b<C; b++)
          {
             System.out.print(board[a][b].getNum());
          }
@@ -94,15 +104,54 @@ public class TrollPanel extends JPanel
    {
       quit = new JButton(name);
       quit.addActionListener(new Listener1());
+      add(quit, BorderLayout.SOUTH);
    }
+   
    private void setup_movement()
    {
+      setLayout(new BorderLayout());
       
+      
+      graphic = new JButton[R][C];
+      JPanel center = new JPanel();
+      center.setLayout(new GridLayout(R,C));
+      add(center, BorderLayout.CENTER);
+   
+      for(int r = 0; r < R; r++)
+         for(int c = 0; c < C; c++)
+         {
+            
+            graphic[r][c] = new JButton();
+            graphic[r][c].setBackground(Color.blue);
+            graphic[r][c].addActionListener( new Handler1(r, c) );
+            center.add(graphic[r][c]);
+         }
    }
+   
+   private void updateScreen()
+   {
+      for(int r = 0; r < R; r++)
+         for(int c = 0; c < C; c++)
+         {
+            switch(board[r][c].getNum())
+            {
+               case 0: graphic[r][c].setBackground(Color.white);
+                  break;
+               case 1: graphic[r][c].setBackground(Color.green);
+                  break;
+               case 2: graphic[r][c].setBackground(Color.blue);
+                  break;
+               case 3: graphic[r][c].setBackground(Color.red);
+                  break;
+            }
+         }
+   }
+   
    private void setTitle(String name)
    {
       title = new JLabel(name);
    }
+   
    private class Listener1 implements ActionListener
    {
       public void actionPerformed(ActionEvent e)
@@ -110,5 +159,22 @@ public class TrollPanel extends JPanel
          System.exit(0);
       }
    }
-
+   
+   private class Handler1 implements ActionListener
+   {
+      private int myRow, myCol;
+      public Handler1(int r, int c)
+      {
+         myRow = r;
+         myCol = c;
+      }
+      public void actionPerformed(ActionEvent e)
+      {
+      	/************************/
+      	/*                      */
+      	/* Your code goes here. */
+      	/*                      */
+      	/************************/
+      }
+   }
 }
