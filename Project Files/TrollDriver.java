@@ -8,6 +8,8 @@
 import java.io.*;
 import javax.swing.JOptionPane;
 import javax.swing.JFrame;
+import java.awt.event.KeyAdapter;              
+import java.awt.event.KeyEvent;
 public class TrollDriver
 {
    public static void main(String[] args) throws Exception

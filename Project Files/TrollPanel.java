@@ -14,6 +14,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Random;
+import java.awt.event.KeyAdapter;              
+import java.awt.event.KeyEvent;
 public class TrollPanel extends JPanel
 {
    private JButton[][] graphic;
@@ -25,10 +27,6 @@ public class TrollPanel extends JPanel
    private int C = 10;
    public TrollPanel()
    {  
-   
-    
-      //SetLayout
-      
       
       //Set Title
       setTitle("Trolls");
@@ -43,9 +41,14 @@ public class TrollPanel extends JPanel
       createbuttons("Quit");
       
       //Define Movement Keys
-      setup_movement();
+      draw_screen();
+      
       
       updateScreen();
+      
+      movement();
+      
+      fininit();
       
    }
    private class Handler implements ActionListener
@@ -102,18 +105,20 @@ public class TrollPanel extends JPanel
       
    private void createbuttons(String name)
    {
+      JPanel bottom = new JPanel();
+      bottom.setLayout(new GridLayout(1,1));
+      add(bottom, BorderLayout.SOUTH);
       quit = new JButton(name);
-      quit.addActionListener(new Listener1());
-      add(quit, BorderLayout.SOUTH);
+      quit.addActionListener(new Handler2());
+      bottom.add(quit);
+      quit.setVisible(true);
    }
    
-   private void setup_movement()
+   private void draw_screen()
    {
       setLayout(new BorderLayout());
-      
-      
       graphic = new JButton[R][C];
-      JPanel center = new JPanel();
+      center = new JPanel();
       center.setLayout(new GridLayout(R,C));
       add(center, BorderLayout.CENTER);
    
@@ -124,6 +129,7 @@ public class TrollPanel extends JPanel
             graphic[r][c] = new JButton();
             graphic[r][c].setBackground(Color.blue);
             graphic[r][c].addActionListener( new Handler1(r, c) );
+            graphic[r][c].setEnabled(false);
             center.add(graphic[r][c]);
          }
    }
@@ -146,17 +152,27 @@ public class TrollPanel extends JPanel
             }
          }
    }
+   private void movement()
+   {
+      quit.addKeyListener(new KeyListener1());
+   }
+   private void fininit()
+   {
+      System.out.println("Finished initialization");
+   }
+   
+   
    
    private void setTitle(String name)
    {
       title = new JLabel(name);
    }
    
-   private class Listener1 implements ActionListener
+   private class Handler2 implements ActionListener
    {
       public void actionPerformed(ActionEvent e)
       {
-         System.exit(0);
+         System.out.println("wut");
       }
    }
    
@@ -170,11 +186,44 @@ public class TrollPanel extends JPanel
       }
       public void actionPerformed(ActionEvent e)
       {
-      	/************************/
-      	/*                      */
-      	/* Your code goes here. */
-      	/*                      */
-      	/************************/
+      
+      }
+   }
+   private class KeyListener1 implements KeyListener
+   {
+      public void keyPressed(KeyEvent event)
+      {
+         switch(event.getKeyCode())
+         {
+            case KeyEvent.VK_UP: System.out.println("Pressed Up!");
+               break;
+            case KeyEvent.VK_DOWN: System.out.println("Pressed Down!");
+               break;
+            case KeyEvent.VK_LEFT: System.out.println("Pressed Left!");
+               break;
+            case KeyEvent.VK_RIGHT: System.out.println("Pressed Right!");
+               break;
+            default: System.out.println("Pressed ERROR!");
+         }
+      }
+      public void keyTyped(KeyEvent event)
+      {
+         switch(event.getKeyCode())
+         {
+            case KeyEvent.VK_UP: System.out.println("Pressed Up!");
+               break;
+            case KeyEvent.VK_DOWN: System.out.println("Pressed Down!");
+               break;
+            case KeyEvent.VK_LEFT: System.out.println("Pressed Left!");
+               break;
+            case KeyEvent.VK_RIGHT: System.out.println("Pressed Right!");
+               break;
+            default: System.out.println("Pressed ERROR!");
+         }
+      }
+      public void keyReleased(KeyEvent event)
+      {
+         //Empty
       }
    }
 }
