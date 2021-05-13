@@ -10,11 +10,11 @@
 import java.math.*;
 
 public class Player extends Block implements Entities {
-   public Player(Block[][] world) {
+   public Player(Block[][] world, int x, int y) {
    //No Variables
    }
 
-   public void Move(Block[][] world) {
+   public void Move(Block[][] world, String d) {
       //will have specific movements to Player
       //Also calls troll movement, if returned a 1, game over
       //For every block in the world, execute Troll.move() if the block is of type troll

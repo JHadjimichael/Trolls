@@ -78,20 +78,30 @@ public class TrollPanel extends JPanel
       int random_x = rand.nextInt(C);
       int random_y = rand.nextInt(R);
       int count = 0;
+      int pr, pc;
+      int numTrolls = 5;
+      int ptime = 0;
       
-   
-      while (board[random_x][random_y].getNum() != 1 || board[random_x][random_y].getNum() != 2) {
+      while(count<numTrolls)
+      {
          random_x = rand.nextInt(C);
          random_y = rand.nextInt(R);
-         board[random_x][random_y] = new Troll();
-         count += 1;
-         if (count == 5)
+         if (board[random_x][random_y].getNum() == 0)
          {
-            break;
+            board[random_x][random_y] = new Troll();
+            count += 1;
          }
       }
-      //make random
-      board[4][5] = new Player(board);
+      while(ptime<1)
+      {
+         pr = rand.nextInt(C);
+         pc = rand.nextInt(R);
+         if (board[pr][pc].getNum() == 0)
+         {
+            board[pr][pc] = new Player(board, pr, pc);
+            ptime += 1;
+         }
+      }
       
       for (int a = 0; a<R; a++)
       {
@@ -154,6 +164,21 @@ public class TrollPanel extends JPanel
    }
    private void movement()
    {
+      int x = 0;
+      int y = 0;
+      for (int a = 0; a<R; a++)
+      {
+         for (int b = 0; b<C; b++)
+         {
+            if(board[a][b].getNum() == 2)
+            {
+               
+               x = a;
+               y = b;
+            }
+         }
+         System.out.println(" ");
+      }
       quit.addKeyListener(new KeyListener1());
    }
    private void fininit()
@@ -195,13 +220,13 @@ public class TrollPanel extends JPanel
       {
          switch(event.getKeyCode())
          {
-            case KeyEvent.VK_UP: System.out.println("Pressed Up!");
+            case KeyEvent.VK_UP: board[a][b].move("n");
                break;
-            case KeyEvent.VK_DOWN: System.out.println("Pressed Down!");
+            case KeyEvent.VK_DOWN: board[a][b].move("s");
                break;
-            case KeyEvent.VK_LEFT: System.out.println("Pressed Left!");
+            case KeyEvent.VK_LEFT: board[a][b].move("w");
                break;
-            case KeyEvent.VK_RIGHT: System.out.println("Pressed Right!");
+            case KeyEvent.VK_RIGHT: board[a][b].move("e");
                break;
             default: System.out.println("Pressed ERROR!");
          }

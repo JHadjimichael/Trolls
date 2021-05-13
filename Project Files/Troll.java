@@ -11,7 +11,7 @@ public class Troll extends Block implements Entities {
       //No variables
    }
 
-   public void Move(Block[][] world) {
+   public void Move(Block[][] world, String d) {
       //will have specific movements to Troll
       //Gets called by player moving, "their eyesight is based on movement".
       //Returns 0 or 1 depending on collision with player
