@@ -26,30 +26,63 @@ public class Player extends Block implements Entities {
       
       switch(d)
       {
-         case "n": System.out.println("Moved the player up");
-            world[r][c] = new Block();
-            r = r-1;
-            xy[0] = r;
-            world[r][c] = this;
-            break;
-         case "s": System.out.println("Moved the player down");
-            world[r][c] = new Block();
-            r = r+1;
-            xy[0] = r;
-            world[r][c] = this;
-            break;
-         case "e": System.out.println("Moved the player to the right");
-            world[r][c] = new Block();
-            c = c+1;
-            xy[1] = c;
-            world[r][c] = this;
-            break;
-         case "w": System.out.println("Moved the player to the left");
-            world[r][c] = new Block();
-            c = c-1;
-            xy[1] = c;
-            world[r][c] = this;
-            break;
+            case "n": System.out.println("Moved the player up");
+                  try{
+                     world[r][c] = new Block();
+                     r = r-1;
+                     xy[0] = r;
+                     world[r][c] = this;
+                     break;
+                  }
+                  catch(ArrayIndexOutOfBoundsException e){
+                     r = r+1;
+                     xy[0] = r;
+                     world[r][c] = this;
+                     break;
+                  }
+            case "s": System.out.println("Moved the player down");
+                  try{
+                     world[r][c] = new Block();
+                     r = r+1;
+                     xy[0] = r;
+                     world[r][c] = this;
+                     break;
+                  }
+                  catch(ArrayIndexOutOfBoundsException e){
+                     r = r-1;
+                     xy[0] = r;
+                     world[r][c] = this;
+                     break;
+                  }
+            case "e": System.out.println("Moved the player to the right");
+                  try{
+                     world[r][c] = new Block();
+                     c = c+1;
+                     xy[1] = c;
+                     world[r][c] = this;
+                     break;
+                  }
+                  catch(ArrayIndexOutOfBoundsException e){
+                     c -= 1;
+                     xy[1] = c;
+                     world[r][c] = this;
+                     break;
+                  }
+            case "w": System.out.println("Moved the player to the left");
+                  try{
+                     world[r][c] = new Block();
+                     c = c-1;
+                     xy[1] = c;
+                     world[r][c] = this;
+                     break;
+                  }
+                  catch(ArrayIndexOutOfBoundsException e){
+                     c += 1;
+                     xy[1] = c;
+                     world[r][c] = this;
+                     break;
+                  }
+               
       }
       
       

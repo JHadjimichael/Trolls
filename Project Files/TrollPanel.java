@@ -234,7 +234,7 @@ public class TrollPanel extends JPanel
       }
       public void keyTyped(KeyEvent event)
       {
-         /*switch(event.getKeyCode())
+        /* switch(event.getKeyCode())
          {
             case KeyEvent.VK_UP: System.out.println("Pressed Up!");
                break;
