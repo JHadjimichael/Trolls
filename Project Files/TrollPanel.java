@@ -20,11 +20,14 @@ public class TrollPanel extends JPanel
 {
    private JButton[][] graphic;
    private Block[][] board;
+   private Player ThePlayer;
    private JLabel title;
    private JButton quit;
    private JPanel center;
    private int R = 10;
    private int C = 10;
+   private playercoords coords;
+   
    public TrollPanel()
    {  
       
@@ -99,6 +102,7 @@ public class TrollPanel extends JPanel
          if (board[pr][pc].getNum() == 0)
          {
             board[pr][pc] = new Player(board, pr, pc);
+            ThePlayer = (Player)board[pr][pc];
             ptime += 1;
          }
       }
@@ -164,8 +168,6 @@ public class TrollPanel extends JPanel
    }
    private void movement()
    {
-      int x = 0;
-      int y = 0;
       for (int a = 0; a<R; a++)
       {
          for (int b = 0; b<C; b++)
@@ -173,11 +175,9 @@ public class TrollPanel extends JPanel
             if(board[a][b].getNum() == 2)
             {
                
-               x = a;
-               y = b;
+               coords = new playercoords(a, b);
             }
          }
-         System.out.println(" ");
       }
       quit.addKeyListener(new KeyListener1());
    }
@@ -220,20 +220,20 @@ public class TrollPanel extends JPanel
       {
          switch(event.getKeyCode())
          {
-            case KeyEvent.VK_UP: board[a][b].move("n");
+            case KeyEvent.VK_UP: ThePlayer.Move(board, "n");
                break;
-            case KeyEvent.VK_DOWN: board[a][b].move("s");
+            case KeyEvent.VK_DOWN: board[coords.getX()][coords.getY()].Move(board, "s");
                break;
-            case KeyEvent.VK_LEFT: board[a][b].move("w");
+            case KeyEvent.VK_LEFT: board[coords.getX()][coords.getY()].Move(board, "w");
                break;
-            case KeyEvent.VK_RIGHT: board[a][b].move("e");
+            case KeyEvent.VK_RIGHT: board[coords.getX()][coords.getY()].Move(board, "e");
                break;
             default: System.out.println("Pressed ERROR!");
          }
       }
       public void keyTyped(KeyEvent event)
       {
-         switch(event.getKeyCode())
+         /*switch(event.getKeyCode())
          {
             case KeyEvent.VK_UP: System.out.println("Pressed Up!");
                break;
@@ -244,7 +244,7 @@ public class TrollPanel extends JPanel
             case KeyEvent.VK_RIGHT: System.out.println("Pressed Right!");
                break;
             default: System.out.println("Pressed ERROR!");
-         }
+         }*/
       }
       public void keyReleased(KeyEvent event)
       {

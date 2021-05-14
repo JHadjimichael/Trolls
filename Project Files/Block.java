@@ -14,6 +14,10 @@ public class Block {
    public Block() {
       //Blocks of the array
    }
+   public void Move(Block[][] board, String d)
+   {
+      System.out.println("A block moved");
+   }
    public int getNum()
    {
       return 0;
