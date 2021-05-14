@@ -19,11 +19,36 @@ public class Player extends Block implements Entities {
       //will have specific movements to Player
       //Also calls troll movement, if returned a 1, game over
       //For every block in the world, execute Troll.move() if the block is of type troll
-      System.out.println("A player moved");
+      int r = xy[0];
+      int c = xy[1];
+      
+      
       
       switch(d)
       {
          case "n": System.out.println("Moved the player up");
+            world[r][c] = new Block();
+            r = r-1;
+            xy[0] = r;
+            world[r][c] = this;
+            break;
+         case "s": System.out.println("Moved the player down");
+            world[r][c] = new Block();
+            r = r+1;
+            xy[0] = r;
+            world[r][c] = this;
+            break;
+         case "e": System.out.println("Moved the player to the right");
+            world[r][c] = new Block();
+            c = c+1;
+            xy[1] = c;
+            world[r][c] = this;
+            break;
+         case "w": System.out.println("Moved the player to the left");
+            world[r][c] = new Block();
+            c = c-1;
+            xy[1] = c;
+            world[r][c] = this;
             break;
       }
       

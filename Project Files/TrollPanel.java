@@ -222,14 +222,15 @@ public class TrollPanel extends JPanel
          {
             case KeyEvent.VK_UP: ThePlayer.Move(board, "n");
                break;
-            case KeyEvent.VK_DOWN: board[coords.getX()][coords.getY()].Move(board, "s");
+            case KeyEvent.VK_DOWN: ThePlayer.Move(board, "s");
                break;
-            case KeyEvent.VK_LEFT: board[coords.getX()][coords.getY()].Move(board, "w");
+            case KeyEvent.VK_LEFT: ThePlayer.Move(board, "w");
                break;
-            case KeyEvent.VK_RIGHT: board[coords.getX()][coords.getY()].Move(board, "e");
+            case KeyEvent.VK_RIGHT: ThePlayer.Move(board, "e");
                break;
             default: System.out.println("Pressed ERROR!");
          }
+         updateScreen();
       }
       public void keyTyped(KeyEvent event)
       {
