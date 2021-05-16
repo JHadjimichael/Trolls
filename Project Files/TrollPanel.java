@@ -91,7 +91,7 @@ public class TrollPanel extends JPanel
          random_y = rand.nextInt(R);
          if (board[random_x][random_y].getNum() == 0)
          {
-            board[random_x][random_y] = new Troll();
+            board[random_x][random_y] = new Troll(board, random_x, random_y);
             count += 1;
          }
       }

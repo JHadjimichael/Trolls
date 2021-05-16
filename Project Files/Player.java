@@ -21,35 +21,51 @@ public class Player extends Block implements Entities {
       //For every block in the world, execute Troll.move() if the block is of type troll
       int r = xy[0];
       int c = xy[1];
-      
-      
-      
-      switch(d)
+      int[] trollTarget = {r, c}; 
+      int[] origcoords = {xy[0], xy[1]};
+      try
       {
-         case "n": System.out.println("Moved the player up");
-            world[r][c] = new Block();
-            r = r-1;
-            xy[0] = r;
-            world[r][c] = this;
-            break;
-         case "s": System.out.println("Moved the player down");
-            world[r][c] = new Block();
-            r = r+1;
-            xy[0] = r;
-            world[r][c] = this;
-            break;
-         case "e": System.out.println("Moved the player to the right");
-            world[r][c] = new Block();
-            c = c+1;
-            xy[1] = c;
-            world[r][c] = this;
-            break;
-         case "w": System.out.println("Moved the player to the left");
-            world[r][c] = new Block();
-            c = c-1;
-            xy[1] = c;
-            world[r][c] = this;
-            break;
+         switch(d)
+         {
+            case "n": System.out.println("Moved the player up");
+               world[r][c] = new Block();
+               r = r-1;
+               xy[0] = r;
+               world[r][c] = this;
+               break;
+            case "s": System.out.println("Moved the player down");
+               world[r][c] = new Block();
+               r = r+1;
+               xy[0] = r;
+               world[r][c] = this;
+               break;
+            case "e": System.out.println("Moved the player to the right");
+               world[r][c] = new Block();
+               c = c+1;
+               xy[1] = c;
+               world[r][c] = this;
+               break;
+            case "w": System.out.println("Moved the player to the left");
+               world[r][c] = new Block();
+               c = c-1;
+               xy[1] = c;
+               world[r][c] = this;
+               break;
+         }
+      }
+      catch(ArrayIndexOutOfBoundsException e)
+      {
+         System.out.println("Illegal move attempted");
+      }
+      for (int a = 0; a<10; a++)
+      {
+         for (int b = 0; b<10; b++)
+         {
+            if(world[a][b].getNum() == 1)
+            {
+               world[a][b].calculate(world, trollTarget);
+            }
+         }
       }
       
       

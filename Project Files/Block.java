@@ -22,4 +22,8 @@ public class Block {
    {
       return 0;
    } 
+   public void calculate(Block[][] world, int[] target)
+   {
+      //fill
+   }
 }
