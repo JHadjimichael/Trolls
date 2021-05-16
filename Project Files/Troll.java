@@ -10,8 +10,9 @@ public class Troll extends Block implements Entities {
    private int[] xy;
    private int hori;
    private int verti;
-   public Troll(Block[][] world, int x, int y) {
-     
+   public int id;
+   public Troll(Block[][] world, int x, int y, int i) {
+      id = i;
       xy = new int[] {x, y};
    }
    public void calculate(Block[][] world, int[] target)
@@ -22,32 +23,34 @@ public class Troll extends Block implements Entities {
       hdiff = Math.abs(target[1] - xy[1]);
       if (target[0] > xy[0])
       {
-         hori = 1;
+         verti = 1;
       }
       else{
-         hori = -1;
+         
+         verti = -1;
       }
       if (target[1] > xy[1])
       {
-         verti = 1;
+         hori = 1;
       }
       else
       {
-         verti = -1;
+         hori = -1;
       }
       if (hdiff > ldiff && verti == -1)
       {
-         this.Move(world, "n");
+         this.Move(world, "s");
+         
       }
       else if (hdiff > ldiff && verti == 1)
       {
-         this.Move(world, "s");
+         this.Move(world, "n");
       }
-      else if (hdiff > ldiff && hori == -1)
+      else if (hdiff < ldiff && hori == -1)
       {
          this.Move(world, "e");
       }
-      else if (hdiff > ldiff && hori == 1)
+      else if (hdiff < ldiff && hori == 1)
       {
          this.Move(world, "w");
       }
@@ -60,44 +63,70 @@ public class Troll extends Block implements Entities {
 
    public void Move(Block[][] world, String d) {
       int[] origcoords = {xy[0], xy[1]};
-      try
-      {
-         int r = xy[0];
-         int c = xy[1]; 
-         
+      int r = xy[0];
+      int c = xy[1]; 
       
-         switch(d)
-         {
-            case "n": System.out.println("BeepUP");
+      System.out.println("Troll "+ Integer.toString(id) + " is at: " + Integer.toString(r) + Integer.toString(c));
+      switch(d)
+      {
+         case "n": //System.out.println("Moved the player up");
+            try{
                world[r][c] = new Block();
                r = r-1;
                xy[0] = r;
                world[r][c] = this;
                break;
-            case "s": System.out.println("BeepDOWN");
+            }
+            catch(ArrayIndexOutOfBoundsException e){
+               r = r+1;
+               xy[0] = r;
+               world[r][c] = this;
+               break;
+            }
+         case "s": //System.out.println("Moved the player down");
+            try{
                world[r][c] = new Block();
                r = r+1;
                xy[0] = r;
                world[r][c] = this;
                break;
-            case "e": System.out.println("BeepRIGHT");
+            }
+            catch(ArrayIndexOutOfBoundsException e){
+               r = r-1;
+               xy[0] = r;
+               world[r][c] = this;
+               break;
+            }
+         case "e": //System.out.println("Moved the player to the right");
+            try{
                world[r][c] = new Block();
                c = c+1;
                xy[1] = c;
                world[r][c] = this;
                break;
-            case "w": System.out.println("BeepLEFT");
+            }
+            catch(ArrayIndexOutOfBoundsException e){
+               c -= 1;
+               xy[1] = c;
+               world[r][c] = this;
+               break;
+            }
+         case "w": //System.out.println("Moved a troll to the left");
+            try{
                world[r][c] = new Block();
                c = c-1;
                xy[1] = c;
                world[r][c] = this;
                break;
-         }
+            }
+            catch(ArrayIndexOutOfBoundsException e){
+               c += 1;
+               xy[1] = c;
+               world[r][c] = this;
+               break;
+            }
       }
-      catch(ArrayIndexOutOfBoundsException e)
-      {
-         System.out.println("Illegal move attempted");
-      }
+      System.out.println("Troll is now at: " + " " + Integer.toString(r) + Integer.toString(c));
    }
    public int getNum()
    {

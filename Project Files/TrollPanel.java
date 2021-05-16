@@ -91,14 +91,14 @@ public class TrollPanel extends JPanel
          random_y = rand.nextInt(R);
          if (board[random_x][random_y].getNum() == 0)
          {
-            board[random_x][random_y] = new Troll(board, random_x, random_y);
+            board[random_x][random_y] = new Troll(board, random_x, random_y, count);
             count += 1;
          }
       }
       while(ptime<1)
       {
-         pr = rand.nextInt(C);
-         pc = rand.nextInt(R);
+         pr = rand.nextInt(R);
+         pc = rand.nextInt(C);
          if (board[pr][pc].getNum() == 0)
          {
             board[pr][pc] = new Player(board, pr, pc);
@@ -234,7 +234,7 @@ public class TrollPanel extends JPanel
       }
       public void keyTyped(KeyEvent event)
       {
-         /*switch(event.getKeyCode())
+        /* switch(event.getKeyCode())
          {
             case KeyEvent.VK_UP: System.out.println("Pressed Up!");
                break;

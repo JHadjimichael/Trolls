@@ -23,51 +23,77 @@ public class Player extends Block implements Entities {
       int c = xy[1];
       int[] trollTarget = {r, c}; 
       int[] origcoords = {xy[0], xy[1]};
-      try
+      switch(d)
       {
-         switch(d)
-         {
-            case "n": System.out.println("Moved the player up");
+         case "n": //System.out.println("Moved the player up");
+            try{
                world[r][c] = new Block();
                r = r-1;
                xy[0] = r;
                world[r][c] = this;
                break;
-            case "s": System.out.println("Moved the player down");
+            }
+            catch(ArrayIndexOutOfBoundsException e){
+               r = r+1;
+               xy[0] = r;
+               world[r][c] = this;
+               break;
+            }
+         case "s": //System.out.println("Moved the player down");
+            try{
                world[r][c] = new Block();
                r = r+1;
                xy[0] = r;
                world[r][c] = this;
                break;
-            case "e": System.out.println("Moved the player to the right");
+            }
+            catch(ArrayIndexOutOfBoundsException e){
+               r = r-1;
+               xy[0] = r;
+               world[r][c] = this;
+               break;
+            }
+         case "e": //System.out.println("Moved the player to the right");
+            try{
                world[r][c] = new Block();
                c = c+1;
                xy[1] = c;
                world[r][c] = this;
                break;
-            case "w": System.out.println("Moved the player to the left");
+            }
+            catch(ArrayIndexOutOfBoundsException e){
+               c -= 1;
+               xy[1] = c;
+               world[r][c] = this;
+               break;
+            }
+         case "w": //System.out.println("Moved the player to the left");
+            try{
                world[r][c] = new Block();
                c = c-1;
                xy[1] = c;
                world[r][c] = this;
                break;
-         }
+            }
+            catch(ArrayIndexOutOfBoundsException e){
+               c += 1;
+               xy[1] = c;
+               world[r][c] = this;
+               break;
+            }
       }
-      catch(ArrayIndexOutOfBoundsException e)
+      System.out.println(Integer.toString(trollTarget[0]));
+      System.out.println(Integer.toString(trollTarget[1]));
+      for (int a = 0; a<world.length; a++)
       {
-         System.out.println("Illegal move attempted");
-      }
-      for (int a = 0; a<10; a++)
-      {
-         for (int b = 0; b<10; b++)
+         for (int b = 0; b<world[0].length; b++)
          {
             if(world[a][b].getNum() == 1)
             {
                world[a][b].calculate(world, trollTarget);
             }
          }
-      }
-      
+      }  
       
    }
    public int[] getxy()

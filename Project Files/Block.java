@@ -24,6 +24,6 @@ public class Block {
    } 
    public void calculate(Block[][] world, int[] target)
    {
-      //fill
+      System.out.println("A block moved?");
    }
 }
