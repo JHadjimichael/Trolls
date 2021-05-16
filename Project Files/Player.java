@@ -81,6 +81,38 @@ public class Player extends Block implements Entities {
                world[r][c] = this;
                break;
             }
+         case "nw": 
+            world[r][c] = new Block();
+            c = c-1;
+            r = r-1; 
+            xy[0] = r;
+            xy[1] = c;
+            world[r][c] = this;
+            break;
+         case "ne": 
+            world[r][c] = new Block();
+            c = c+1;
+            r = r-1; 
+            xy[0] = r;
+            xy[1] = c;
+            world[r][c] = this;
+            break;
+         case "sw": 
+            world[r][c] = new Block();
+            c = c-1;
+            r = r+1; 
+            xy[0] = r;
+            xy[1] = c;
+            world[r][c] = this;
+            break;
+         case "se": 
+            world[r][c] = new Block();
+            c = c+1;
+            r = r+1; 
+            xy[0] = r;
+            xy[1] = c;
+            world[r][c] = this;
+            break;
       }
       System.out.println(Integer.toString(trollTarget[0]));
       System.out.println(Integer.toString(trollTarget[1]));
