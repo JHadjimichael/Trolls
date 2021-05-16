@@ -220,13 +220,33 @@ public class TrollPanel extends JPanel
       {
          switch(event.getKeyCode())
          {
-            case KeyEvent.VK_UP: ThePlayer.Move(board, "n");
+            case KeyEvent.VK_UP: 
+            case KeyEvent.VK_W:
+               ThePlayer.Move(board, "n");
                break;
-            case KeyEvent.VK_DOWN: ThePlayer.Move(board, "s");
+            case KeyEvent.VK_Q:
+               ThePlayer.Move(board, "nw");
                break;
-            case KeyEvent.VK_LEFT: ThePlayer.Move(board, "w");
+            case KeyEvent.VK_E:
+               ThePlayer.Move(board, "ne");
                break;
-            case KeyEvent.VK_RIGHT: ThePlayer.Move(board, "e");
+            case KeyEvent.VK_DOWN:
+            case KeyEvent.VK_S:
+               ThePlayer.Move(board, "s");
+               break;
+            case KeyEvent.VK_Z:
+               ThePlayer.Move(board, "sw");
+               break;
+            case KeyEvent.VK_LEFT:
+            case KeyEvent.VK_A:
+               ThePlayer.Move(board, "w");
+               break;
+            case KeyEvent.VK_C:
+               ThePlayer.Move(board, "se");
+               break;
+            case KeyEvent.VK_RIGHT:
+            case KeyEvent.VK_D:
+               ThePlayer.Move(board, "e");
                break;
             default: System.out.println("Pressed ERROR!");
          }
