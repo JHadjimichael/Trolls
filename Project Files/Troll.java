@@ -15,50 +15,9 @@ public class Troll extends Block implements Entities {
       id = i;
       xy = new int[] {x, y};
    }
-   public void calculate(Block[][] world, int[] target)
+   public void calculate(Block[][] newworld, int[] target)
    {
-      int hdiff;
-      int ldiff;
-      ldiff = Math.abs(target[0] - xy[0]);
-      hdiff = Math.abs(target[1] - xy[1]);
-      if (target[0] > xy[0])
-      {
-         verti = 1;
-      }
-      else{
-         
-         verti = -1;
-      }
-      if (target[1] > xy[1])
-      {
-         hori = 1;
-      }
-      else
-      {
-         hori = -1;
-      }
-      if (hdiff > ldiff && verti == -1)
-      {
-         this.Move(world, "s");
-         
-      }
-      else if (hdiff > ldiff && verti == 1)
-      {
-         this.Move(world, "n");
-      }
-      else if (hdiff < ldiff && hori == -1)
-      {
-         this.Move(world, "e");
-      }
-      else if (hdiff < ldiff && hori == 1)
-      {
-         this.Move(world, "w");
-      }
-      //else
-      //{
-         //System.out.println("You Died!");
-         //System.exit(0);
-      //}
+      
    }
 
    public void Move(Block[][] world, String d) {

@@ -14,6 +14,19 @@ public class Player extends Block implements Entities {
    public Player(Block[][] world, int x, int y) {
       xy = new int[] {x, y};
    }
+   public boolean bcheck(Block[][] world, int newr, int newc)
+   {
+      if (newr < 0 || newr >= world.length
+         || newc < 0 || newc >= world[0].length)
+      {
+         return false;
+      } 
+      if (world[newr][newc].getNum() != 0)
+      {
+         return false;
+      }
+      return true;
+   }
 
    public void Move(Block[][] world, String d) {
       //will have specific movements to Player
@@ -26,103 +39,104 @@ public class Player extends Block implements Entities {
       switch(d)
       {
          case "n": //System.out.println("Moved the player up");
-            try{
+            if (bcheck(world, r-1, c))
+            {
                world[r][c] = new Block();
                r = r-1;
                xy[0] = r;
                world[r][c] = this;
-               break;
             }
-            catch(ArrayIndexOutOfBoundsException e){
-               r = r+1;
-               xy[0] = r;
-               world[r][c] = this;
-               break;
-            }
+            break;
          case "s": //System.out.println("Moved the player down");
-            try{
+            if (bcheck(world, r+1, c))
+            {
                world[r][c] = new Block();
                r = r+1;
                xy[0] = r;
                world[r][c] = this;
-               break;
             }
-            catch(ArrayIndexOutOfBoundsException e){
-               r = r-1;
-               xy[0] = r;
-               world[r][c] = this;
-               break;
-            }
+            break;
          case "e": //System.out.println("Moved the player to the right");
-            try{
+            if (bcheck(world, r, c+1))
+            {
                world[r][c] = new Block();
                c = c+1;
                xy[1] = c;
                world[r][c] = this;
-               break;
             }
-            catch(ArrayIndexOutOfBoundsException e){
-               c -= 1;
-               xy[1] = c;
-               world[r][c] = this;
-               break;
-            }
+            break;
          case "w": //System.out.println("Moved the player to the left");
-            try{
+            if (bcheck(world, r, c-1))
+            {
                world[r][c] = new Block();
                c = c-1;
                xy[1] = c;
                world[r][c] = this;
                break;
             }
-            catch(ArrayIndexOutOfBoundsException e){
-               c += 1;
+         case "nw": 
+            if (bcheck(world, r-1, c-1))
+            {
+               world[r][c] = new Block();
+               c = c-1;
+               r = r-1; 
+               xy[0] = r;
                xy[1] = c;
                world[r][c] = this;
-               break;
             }
-         case "nw": 
-            world[r][c] = new Block();
-            c = c-1;
-            r = r-1; 
-            xy[0] = r;
-            xy[1] = c;
-            world[r][c] = this;
             break;
          case "ne": 
-            world[r][c] = new Block();
-            c = c+1;
-            r = r-1; 
-            xy[0] = r;
-            xy[1] = c;
-            world[r][c] = this;
+            if (bcheck(world, r-1, c+1))
+            {
+               world[r][c] = new Block();
+               c = c+1;
+               r = r-1; 
+               xy[0] = r;
+               xy[1] = c;
+               world[r][c] = this;
+            }
             break;
          case "sw": 
-            world[r][c] = new Block();
-            c = c-1;
-            r = r+1; 
-            xy[0] = r;
-            xy[1] = c;
-            world[r][c] = this;
+            if (bcheck(world, r+1, c-1))
+            {
+               world[r][c] = new Block();
+               c = c-1;
+               r = r+1; 
+               xy[0] = r;
+               xy[1] = c;
+               world[r][c] = this;
+            }
             break;
          case "se": 
-            world[r][c] = new Block();
-            c = c+1;
-            r = r+1; 
-            xy[0] = r;
-            xy[1] = c;
-            world[r][c] = this;
+            if (bcheck(world, r+1, c+1))
+            {
+               world[r][c] = new Block();
+               c = c+1;
+               r = r+1; 
+               xy[0] = r;
+               xy[1] = c;
+               world[r][c] = this;
+            }
             break;
       }
       System.out.println(Integer.toString(trollTarget[0]));
       System.out.println(Integer.toString(trollTarget[1]));
+      Block[][] newworld = new Block[world.length][world[0].length];
+      for(int i = 0; i<world.length; i++)
+      {
+         for(int a = 0; a<world[0].length; a++)
+         {
+            newworld[i][a] = new Block();
+         }
+      }
+      
       for (int a = 0; a<world.length; a++)
       {
          for (int b = 0; b<world[0].length; b++)
          {
             if(world[a][b].getNum() == 1)
             {
-               world [a][b].calculate(world, trollTarget);
+               world[a][b].calculate(newworld, trollTarget);
             }
          }
       }  
