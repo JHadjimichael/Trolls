@@ -122,7 +122,7 @@ public class Player extends Block implements Entities {
          {
             if(world[a][b].getNum() == 1)
             {
-               world[a][b].calculate(world, trollTarget);
+               world [a][b].calculate(world, trollTarget);
             }
          }
       }  
