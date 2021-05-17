@@ -144,6 +144,7 @@ public class TrollPanel extends JPanel
             graphic[r][c].setBackground(Color.blue);
             graphic[r][c].addActionListener( new Handler1(r, c) );
             graphic[r][c].setEnabled(false);
+            graphic[r][c].setBorderPainted(false);
             center.add(graphic[r][c]);
          }
    }
@@ -247,6 +248,9 @@ public class TrollPanel extends JPanel
             case KeyEvent.VK_RIGHT:
             case KeyEvent.VK_D:
                ThePlayer.Move(board, "e");
+               break;
+            case KeyEvent.VK_SPACE:
+               ThePlayer.teleport(board);
                break;
             default: System.out.println("Pressed ERROR!");
          }

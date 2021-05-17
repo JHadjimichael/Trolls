@@ -58,6 +58,7 @@ public class Troll extends Block implements Entities {
       }
       System.out.println("Troll is now at: " + " " + Integer.toString(r) + Integer.toString(c));
    }
+   
 
 
       
