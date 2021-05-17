@@ -17,6 +17,7 @@ public class Troll extends Block implements Entities {
    }
    public void calculate(Block[][] newworld, int[] target)
    {
+      System.out.println("Troll " +id+ " is at: " + " " + Integer.toString(xy[0]) + Integer.toString(xy[1]));
       int dr = 0;
       int dc = 0;
       if (xy[0] > target[0])
@@ -41,6 +42,8 @@ public class Troll extends Block implements Entities {
       {
          case 0: //Empty
             newworld[r][c] = this;
+            xy[0] = r;
+            xy[1] = c;
             break;
          case 1: //Troll Collision
             newworld[r][c] = new Corpse();
@@ -53,99 +56,12 @@ public class Troll extends Block implements Entities {
             //Corpses pile up!
             break;
       }
+      System.out.println("Troll is now at: " + " " + Integer.toString(r) + Integer.toString(c));
    }
 
-   /*public void Move(Block[][] world, String d) {
-      int[] origcoords = {xy[0], xy[1]};
-      int r = xy[0];
-      int c = xy[1]; 
+
       
-      System.out.println("Troll "+ Integer.toString(id) + " is at: " + Integer.toString(r) + Integer.toString(c));
-      switch(d)
-      {
-         case "n": //System.out.println("Moved the player up");
-            if (bcheck(world, r-1, c))
-            {
-               world[r][c] = new Block();
-               r = r-1;
-               xy[0] = r;
-               world[r][c] = this;
-            }
-            break;
-         case "s": //System.out.println("Moved the player down");
-            if (bcheck(world, r+1, c))
-            {
-               world[r][c] = new Block();
-               r = r+1;
-               xy[0] = r;
-               world[r][c] = this;
-            }
-            break;
-         case "e": //System.out.println("Moved the player to the right");
-            if (bcheck(world, r, c+1))
-            {
-               world[r][c] = new Block();
-               c = c+1;
-               xy[1] = c;
-               world[r][c] = this;
-            }
-            break;
-         case "w": //System.out.println("Moved the player to the left");
-            if (bcheck(world, r, c-1))
-            {
-               world[r][c] = new Block();
-               c = c-1;
-               xy[1] = c;
-               world[r][c] = this;
-               break;
-            }
-         case "nw": 
-            if (bcheck(world, r-1, c-1))
-            {
-               world[r][c] = new Block();
-               c = c-1;
-               r = r-1; 
-               xy[0] = r;
-               xy[1] = c;
-               world[r][c] = this;
-            }
-            break;
-         case "ne": 
-            if (bcheck(world, r-1, c+1))
-            {
-               world[r][c] = new Block();
-               c = c+1;
-               r = r-1; 
-               xy[0] = r;
-               xy[1] = c;
-               world[r][c] = this;
-            }
-            break;
-         case "sw": 
-            if (bcheck(world, r+1, c-1))
-            {
-               world[r][c] = new Block();
-               c = c-1;
-               r = r+1; 
-               xy[0] = r;
-               xy[1] = c;
-               world[r][c] = this;
-            }
-            break;
-         case "se": 
-            if (bcheck(world, r+1, c+1))
-            {
-               world[r][c] = new Block();
-               c = c+1;
-               r = r+1; 
-               xy[0] = r;
-               xy[1] = c;
-               world[r][c] = this;
-            }
-            break;
-      }
-      System.out.println("Troll is now at: " + " " + Integer.toString(r) + Integer.toString(c));
-   }*/
+
    public int getNum()
    {
       return 1;
