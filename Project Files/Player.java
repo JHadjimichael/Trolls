@@ -34,7 +34,7 @@ public class Player extends Block implements Entities {
       //For every block in the world, execute Troll.move() if the block is of type troll
       int r = xy[0];
       int c = xy[1];
-      int[] trollTarget = {r, c}; 
+       
       int[] origcoords = {xy[0], xy[1]};
       switch(d)
       {
@@ -72,8 +72,8 @@ public class Player extends Block implements Entities {
                c = c-1;
                xy[1] = c;
                world[r][c] = this;
-               break;
             }
+            break;
          case "nw": 
             if (bcheck(world, r-1, c-1))
             {
@@ -119,6 +119,7 @@ public class Player extends Block implements Entities {
             }
             break;
       }
+      int[] trollTarget = {r, c};
       System.out.println(Integer.toString(trollTarget[0]));
       System.out.println(Integer.toString(trollTarget[1]));
       Block[][] newworld = new Block[world.length][world[0].length];
@@ -129,7 +130,7 @@ public class Player extends Block implements Entities {
             newworld[i][a] = new Block();
          }
       }
-      //newworld[xy[0]][xy[1]] = this;
+      newworld[xy[0]][xy[1]] = this;
       
       for (int a = 0; a<world.length; a++)
       {
@@ -140,7 +141,6 @@ public class Player extends Block implements Entities {
                case 1: 
                   world[a][b].calculate(newworld, trollTarget);
                   break;
-               case 2:
                case 3: 
                   newworld[a][b] = world[a][b];
                   break;

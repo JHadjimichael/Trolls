@@ -24,8 +24,8 @@ public class TrollPanel extends JPanel
    private JLabel title;
    private JButton quit;
    private JPanel center;
-   private int R = 10;
-   private int C = 10;
+   private int R = 100;
+   private int C = 100;
    private playercoords coords;
    
    public TrollPanel()
@@ -82,7 +82,7 @@ public class TrollPanel extends JPanel
       int random_y = rand.nextInt(R);
       int count = 0;
       int pr, pc;
-      int numTrolls = 5;
+      int numTrolls = 20;
       int ptime = 0;
       
       while(count<numTrolls)
