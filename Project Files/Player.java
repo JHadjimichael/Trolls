@@ -129,6 +129,7 @@ public class Player extends Block implements Entities {
             newworld[i][a] = new Block();
          }
       }
+      newworld[xy[0]][xy[1]] = this;
       
       for (int a = 0; a<world.length; a++)
       {
@@ -138,6 +139,13 @@ public class Player extends Block implements Entities {
             {
                world[a][b].calculate(newworld, trollTarget);
             }
+         }
+      }
+      for (int a = 0; a<world.length; a++)
+      {
+         for (int b = 0; b<world[0].length; b++)
+         {
+            world[a][b] = newworld[a][b];
          }
       }  
       
