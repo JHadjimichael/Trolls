@@ -198,7 +198,7 @@ public class TrollPanel extends JPanel
    {
       public void actionPerformed(ActionEvent e)
       {
-         System.out.println("wut");
+         System.out.println("Waiting");
       }
    }
    
@@ -249,12 +249,16 @@ public class TrollPanel extends JPanel
             case KeyEvent.VK_D:
                ThePlayer.Move(board, "e");
                break;
+            case KeyEvent.VK_T:
+               ThePlayer.Move(board, "t");
+               break;
             case KeyEvent.VK_SPACE:
-               ThePlayer.teleport(board);
+               ThePlayer.Move(board, "poo");
                break;
             default: System.out.println("Pressed ERROR!");
          }
          updateScreen();
+         
       }
       public void keyTyped(KeyEvent event)
       {

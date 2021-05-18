@@ -119,6 +119,17 @@ public class Player extends Block implements Entities {
                world[r][c] = this;
             }
             break;
+         case "t":
+            Random rand = new Random();
+            world[r][c] = new Block();
+            r = rand.nextInt(world.length);
+            c = rand.nextInt(world[0].length);
+            xy[0] = r;
+            xy[1] = c;
+            world[r][c] = this;
+            break;
+         case "poo":
+            break;
       }
       int[] trollTarget = {r, c};
       System.out.println(Integer.toString(trollTarget[0]));
@@ -155,19 +166,6 @@ public class Player extends Block implements Entities {
             world[a][b] = newworld[a][b];
          }
       }  
-      
-   }
-   public void teleport(Block[][] world)
-   {
-      int r = xy[0];
-      int c = xy[1];
-      Random rand = new Random();
-      world[r][c] = new Block();
-      r = rand.nextInt(world.length);
-      c = rand.nextInt(world[0].length);
-      xy[0] = r;
-      xy[1] = c;
-      world[r][c] = this;
       
    }
    public int[] getxy()
