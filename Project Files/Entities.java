@@ -9,6 +9,6 @@ import java.io.*;
 
 public interface Entities {
 //Moves depending on context.
-   public abstract void Move(Block[][] world, String d);
+   public abstract int Move(Block[][] world, String d);
 }
 

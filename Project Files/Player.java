@@ -12,8 +12,11 @@ import java.util.Random;
 
 public class Player extends Block implements Entities {
    private int[] xy;
-   public Player(Block[][] world, int x, int y) {
+   private TrollPanel thispanel;
+   private int result = 0;
+   public Player(Block[][] world, int x, int y, TrollPanel panel) {
       xy = new int[] {x, y};
+      thispanel = panel;
    }
    public boolean bcheck(Block[][] world, int newr, int newc)
    {
@@ -29,7 +32,7 @@ public class Player extends Block implements Entities {
       return true;
    }
 
-   public void Move(Block[][] world, String d) {
+   public int Move(Block[][] world, String d) {
       //will have specific movements to Player
       //Also calls troll movement, if returned a 1, game over
       //For every block in the world, execute Troll.move() if the block is of type troll
@@ -132,8 +135,8 @@ public class Player extends Block implements Entities {
             break;
       }
       int[] trollTarget = {r, c};
-      System.out.println(Integer.toString(trollTarget[0]));
-      System.out.println(Integer.toString(trollTarget[1]));
+      //System.out.println(Integer.toString(trollTarget[0]));
+      //System.out.println(Integer.toString(trollTarget[1]));
       Block[][] newworld = new Block[world.length][world[0].length];
       for(int i = 0; i<world.length; i++)
       {
@@ -151,7 +154,7 @@ public class Player extends Block implements Entities {
             switch(world[a][b].getNum())
             {
                case 1: 
-                  world[a][b].calculate(newworld, trollTarget);
+                  result += world[a][b].calculate(newworld, trollTarget);
                   break;
                case 3: 
                   newworld[a][b] = world[a][b];
@@ -165,7 +168,8 @@ public class Player extends Block implements Entities {
          {
             world[a][b] = newworld[a][b];
          }
-      }  
+      }
+      return result;  
       
    }
    public int[] getxy()

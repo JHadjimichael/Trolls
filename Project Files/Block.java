@@ -14,16 +14,18 @@ public class Block {
    public Block() {
       //Blocks of the array
    }
-   public void Move(Block[][] board, String d)
+   public int Move(Block[][] board, String d)
    {
       System.out.println("A block moved");
+      return 0;
    }
    public int getNum()
    {
       return 0;
    } 
-   public void calculate(Block[][] world, int[] target)
+   public int calculate(Block[][] world, int[] target)
    {
       System.out.println("A block moved?");
+      return 0;
    }
 }
