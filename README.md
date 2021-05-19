@@ -5,13 +5,12 @@
   # The player has many functions:
     # Up/Down/Left/Right movement: (arrow keys or W, A, S, D)
     # Diagonal Up-Left/Diagonal Up-Right/Diagonal Down-Left/Diagonal Down-Right movement(Q, Z, C, E)
-    # Space key: Trolls come to player
+    # Space key: Player waits, and trolls come to player
     # T key: Player teleports to random place on the board
   # Trolls have the following functions:
-    # They move towards the player
-    # They get killed if they run into one another
-    # When trolls collide, there is a corpse
+    # Take shortest possible path towards player
+    # When trolls collide, trolls die, and create a corpse
   # The player wins:
     # When there are all corpses
-  # The player looses: 
+  # The player loses: 
     # When eaten by a troll
