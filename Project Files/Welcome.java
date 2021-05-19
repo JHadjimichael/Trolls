@@ -11,17 +11,47 @@ public class Welcome extends JPanel{
       changeval = 0;
       setLayout(new BorderLayout());
       JPanel panel = new JPanel();
-      panel.setLayout(new GridLayout(2, 1));
-      BufferedImage image = ImageIO.read(new File("download.jpg"));
-      JLabel label = new JLabel(new ImageIcon(image));
-      panel.add(label);
-      label.setVisible(true);
+      panel.setLayout(new GridLayout(1, 1));
+      //label.setVisible(true);
       
       JButton b = new JButton("Start");
       b.addActionListener(new Listener1());
       panel.add(b);
       b.setVisible(true);
-      add(panel, BorderLayout.CENTER);
+      panel.setBackground(Color.GREEN);
+      add(panel, BorderLayout.SOUTH);
+      
+      JPanel north = new JPanel();
+      north.setBackground(Color.GREEN);
+      north.setLayout(new GridLayout(2, 1));
+      JLabel trolls = new JLabel("TROLLS");
+      trolls.setFont(new Font("Comic Sans", Font.PLAIN, 75));
+      trolls.setVisible(true);
+      north.add(trolls);
+      JLabel author = new JLabel("By: Jai Agarwal, Jordan Hadjimichael, and Venkat Penmetsa");
+      author.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+      author.setVisible(true);
+      north.add(author);
+      add(north, BorderLayout.NORTH);
+      
+      JPanel welcome = new JPanel();
+      welcome.setBackground(Color.GREEN);
+      welcome.setLayout(new GridLayout(2, 1));
+      JLabel hello = new JLabel("Welcome!");
+      hello.setFont(new Font("Arial", Font.BOLD, 140));
+      hello.setVisible(true);
+      welcome.add(hello);
+      JLabel start = new JLabel("Click 'Start' to play the game");
+      start.setFont(new Font("Times New Roman", Font.PLAIN, 50));
+      start.setVisible(true);
+      welcome.add(start);
+      add(welcome, BorderLayout.CENTER);
+      
+      
+      
+      
+      
+      setBackground(Color.GREEN);
       
       
       

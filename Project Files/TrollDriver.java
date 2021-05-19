@@ -15,7 +15,7 @@ public class TrollDriver
    public static void main(String[] args) throws Exception
    {
       JFrame frame = new JFrame("TROLLS");
-      frame.setSize(1000, 1000);
+      frame.setSize(900, 900);
       frame.setLocation(200, 100);
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       Welcome welcome = new Welcome();
