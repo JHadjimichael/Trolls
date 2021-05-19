@@ -10,18 +10,18 @@ public class Welcome extends JPanel{
    public Welcome() throws IOException{
       changeval = 0;
       setLayout(new BorderLayout());
-      /*JPanel panel = new JPanel();
-      panel.setLayout(new GridLayout(2, 1));*/
-      //JLabel label = new JLabel("Hello");
+      JPanel panel = new JPanel();
+      panel.setLayout(new GridLayout(2, 1));
       BufferedImage image = ImageIO.read(new File("download.jpg"));
       JLabel label = new JLabel(new ImageIcon(image));
-      add(label);
+      panel.add(label);
       label.setVisible(true);
       
       JButton b = new JButton("Start");
       b.addActionListener(new Listener1());
-      add(b);
+      panel.add(b);
       b.setVisible(true);
+      add(panel, BorderLayout.CENTER);
       
       
       

@@ -17,7 +17,7 @@ public class Troll extends Block implements Entities {
    }
    public void calculate(Block[][] newworld, int[] target)
    {
-      System.out.println("Troll " +id+ " is at: " + " " + Integer.toString(xy[0]) + Integer.toString(xy[1]));
+      //System.out.println("Troll " +id+ " is at: " + " " + Integer.toString(xy[0]) + Integer.toString(xy[1]));
       int dr = 0;
       int dc = 0;
       if (xy[0] > target[0])
@@ -56,7 +56,7 @@ public class Troll extends Block implements Entities {
             //Corpses pile up!
             break;
       }
-      System.out.println("Troll is now at: " + " " + Integer.toString(r) + Integer.toString(c));
+      //System.out.println("Troll is now at: " + " " + Integer.toString(r) + Integer.toString(c));
    }
    
 
