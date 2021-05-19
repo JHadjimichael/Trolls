@@ -15,12 +15,19 @@ public class TrollDriver
    public static void main(String[] args) throws Exception
    {
       JFrame frame = new JFrame("TROLLS");
-      frame.setSize(300, 300);
+      frame.setSize(1000, 1000);
       frame.setLocation(200, 100);
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      frame.setContentPane(new Welcome());
-      //frame.setContentPane(new TrollPanel());
+      Welcome welcome = new Welcome();
+      frame.setContentPane(welcome);
       frame.setVisible(true);
+      while (welcome.changeCheck() == 0)
+      {
+         Thread.sleep(1000);
+      }
+      frame.getContentPane().removeAll();
+      frame.setContentPane(new TrollPanel());
+      frame.revalidate();
    }
  
 }
