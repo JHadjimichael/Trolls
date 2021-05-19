@@ -27,6 +27,7 @@ public class TrollPanel extends JPanel
    private int R = 100;
    private int C = 100;
    private playercoords coords;
+   private int changeval = 0;
    
    public TrollPanel()
    {  
@@ -101,20 +102,20 @@ public class TrollPanel extends JPanel
          pc = rand.nextInt(C);
          if (board[pr][pc].getNum() == 0)
          {
-            board[pr][pc] = new Player(board, pr, pc);
+            board[pr][pc] = new Player(board, pr, pc, this);
             ThePlayer = (Player)board[pr][pc];
             ptime += 1;
          }
       }
       
-      for (int a = 0; a<R; a++)
+      /*for (int a = 0; a<R; a++)
       {
          for (int b = 0; b<C; b++)
          {
             System.out.print(board[a][b].getNum());
          }
          System.out.println(" ");
-      }
+      }*/
    }
       
    private void createbuttons(String name)
@@ -217,47 +218,74 @@ public class TrollPanel extends JPanel
    }
    private class KeyListener1 implements KeyListener
    {
+      int result = -1;
+      
       public void keyPressed(KeyEvent event)
       {
+         int livetrollcount = 0;
          switch(event.getKeyCode())
          {
             case KeyEvent.VK_UP: 
             case KeyEvent.VK_W:
-               ThePlayer.Move(board, "n");
+               result = ThePlayer.Move(board, "n");
                break;
             case KeyEvent.VK_Q:
-               ThePlayer.Move(board, "nw");
+               result = ThePlayer.Move(board, "nw");
                break;
             case KeyEvent.VK_E:
-               ThePlayer.Move(board, "ne");
+               result = ThePlayer.Move(board, "ne");
                break;
             case KeyEvent.VK_DOWN:
             case KeyEvent.VK_S:
-               ThePlayer.Move(board, "s");
+               result = ThePlayer.Move(board, "s");
                break;
             case KeyEvent.VK_Z:
-               ThePlayer.Move(board, "sw");
+               result = ThePlayer.Move(board, "sw");
                break;
             case KeyEvent.VK_LEFT:
             case KeyEvent.VK_A:
-               ThePlayer.Move(board, "w");
+               result = ThePlayer.Move(board, "w");
                break;
             case KeyEvent.VK_C:
-               ThePlayer.Move(board, "se");
+               result = ThePlayer.Move(board, "se");
                break;
             case KeyEvent.VK_RIGHT:
             case KeyEvent.VK_D:
-               ThePlayer.Move(board, "e");
+               result = ThePlayer.Move(board, "e");
                break;
             case KeyEvent.VK_T:
-               ThePlayer.Move(board, "t");
+               result = ThePlayer.Move(board, "t");
                break;
             case KeyEvent.VK_SPACE:
-               ThePlayer.Move(board, "poo");
+               result = ThePlayer.Move(board, "poo");
                break;
             default: System.out.println("Pressed ERROR!");
          }
+         
          updateScreen();
+         
+         if (result > 0)
+         {
+            System.out.println("GAME OVER");
+            changeval = 1;   
+         }
+         
+         for (int a = 0; a<R; a++)
+         {
+            for (int b = 0; b<C; b++)
+            {
+               if(board[a][b].getNum() == 1)
+               {
+                  livetrollcount++;   
+               }
+            }
+         } 
+         System.out.println(Integer.toString(livetrollcount));
+         if (livetrollcount == 0)
+         {
+            System.out.println("YOU WIN");
+            changeval = 2;
+         }
          
       }
       public void keyTyped(KeyEvent event)
@@ -279,5 +307,14 @@ public class TrollPanel extends JPanel
       {
          //Empty
       }
+      
+   }
+   public int changeCheck()
+   {
+      return changeval;
+   }
+   public void changecheckval(int val)
+   {
+      changeval = val;
    }
 }

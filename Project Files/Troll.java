@@ -11,11 +11,12 @@ public class Troll extends Block implements Entities {
    private int hori;
    private int verti;
    public int id;
+   public TrollPanel thepanel;
    public Troll(Block[][] world, int x, int y, int i) {
       id = i;
       xy = new int[] {x, y};
    }
-   public void calculate(Block[][] newworld, int[] target)
+   public int calculate(Block[][] newworld, int[] target)
    {
       //System.out.println("Troll " +id+ " is at: " + " " + Integer.toString(xy[0]) + Integer.toString(xy[1]));
       int dr = 0;
@@ -50,12 +51,12 @@ public class Troll extends Block implements Entities {
             break;
          case 2: //Player Collision
             System.out.println("You were eaten!");
-            System.exit(0);
-            break;
+            return 1;
          case 3: //Corpse Collision
             //Corpses pile up!
             break;
       }
+      return 0;
       //System.out.println("Troll is now at: " + " " + Integer.toString(r) + Integer.toString(c));
    }
    
