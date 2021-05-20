@@ -16,7 +16,7 @@ public class TrollDriver
    {
       boolean playagain = true;
       JFrame frame = new JFrame("TROLLS");
-      frame.setSize(400, 400);
+      frame.setSize(1000, 1000);
       frame.setLocation(200, 100);
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       Welcome welcome = new Welcome();
