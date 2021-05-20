@@ -129,7 +129,14 @@ public class Player extends Block implements Entities {
             c = rand.nextInt(world[0].length);
             xy[0] = r;
             xy[1] = c;
-            world[r][c] = this;
+            if (bcheck(world, r, c))
+            {
+               world[r][c] = this;
+            }
+            else 
+            {
+               result = 1;
+            }
             break;
          case "poo":
             break;
