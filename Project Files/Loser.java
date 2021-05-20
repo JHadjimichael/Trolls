@@ -45,6 +45,7 @@ public class Loser extends JPanel{
       public void actionPerformed(ActionEvent e)
       {
          System.out.println("You pressed the Quit Buttton!");
+         System.exit(0);
       }
    }
       
