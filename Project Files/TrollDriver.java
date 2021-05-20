@@ -14,6 +14,7 @@ public class TrollDriver
 {
    public static void main(String[] args) throws Exception
    {
+      boolean playagain = true;
       JFrame frame = new JFrame("TROLLS");
       frame.setSize(400, 400);
       frame.setLocation(200, 100);
@@ -21,34 +22,47 @@ public class TrollDriver
       Welcome welcome = new Welcome();
       frame.setContentPane(welcome);
       frame.setVisible(true);
-      while (welcome.changeCheck() == 0)
+      while (playagain)
       {
-         Thread.sleep(1000);
+         while (welcome.changeCheck() == 0)
+         {
+            Thread.sleep(1000);
+         }
+         frame.getContentPane().removeAll();
+         
+         TrollPanel trollpanel = new TrollPanel();
+         frame.setContentPane(trollpanel);
+         frame.revalidate();
+         frame.repaint();
+         while (trollpanel.changeCheck() == 0)
+         {
+            Thread.sleep(1000);
+         }
+         if (trollpanel.changeCheck() == 1)
+         {
+            Loser loser = new Loser();
+            frame.setContentPane(loser);
+            frame.revalidate();
+            frame.repaint();
+            while(loser.changeCheck() == 0)
+            {
+               Thread.sleep(100);
+            }
+         }
+         else if (trollpanel.changeCheck() == 2)
+         {
+            Winner winner = new Winner();
+            frame.setContentPane(winner);
+            frame.revalidate();
+            frame.repaint();
+            while(winner.changeCheck() == 0)
+            {
+               Thread.sleep(100);
+            }
+         }
+         
       }
-      frame.getContentPane().removeAll();
       
-      TrollPanel trollpanel = new TrollPanel();
-      frame.setContentPane(trollpanel);
-      frame.revalidate();
-      frame.repaint();
-      while (trollpanel.changeCheck() == 0)
-      {
-         Thread.sleep(1000);
-      }
-      if (trollpanel.changeCheck() == 1)
-      {
-         Loser loser = new Loser();
-         frame.setContentPane(loser);
-         frame.revalidate();
-         frame.repaint();
-      }
-      else if (trollpanel.changeCheck() == 2)
-      {
-         Winner winner = new Winner();
-         frame.setContentPane(winner);
-         frame.revalidate();
-         frame.repaint();
-      }
    }
  
 }

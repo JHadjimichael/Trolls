@@ -5,6 +5,7 @@ import java.io.*;
 import java.awt.event.*;
 
 public class Winner extends JPanel{
+   public int changeval = 0;
    public Winner() throws IOException{
    
       Font bigFont = new Font("Times New Roman", Font.PLAIN, 50);
@@ -54,6 +55,11 @@ public class Winner extends JPanel{
       public void actionPerformed(ActionEvent e)
       {
          System.out.println("You pressed the Restart Buttton!");
+         changeval = 1;
       }
-   }   
+   } 
+   public int changeCheck()
+   {
+      return changeval;
+   }  
 }
