@@ -10,7 +10,7 @@ public class Welcome extends JPanel{
    public Welcome() throws IOException{
       changeval = 0;
       setLayout(new BorderLayout());
-
+   
       JPanel panel = new JPanel();
       panel.setLayout(new GridLayout(1, 1));
       
@@ -26,7 +26,7 @@ public class Welcome extends JPanel{
       welcome.setBackground(Color.GREEN);
       welcome.setLayout(new GridLayout(3, 1));
       JLabel hello = new JLabel("Welcome to TROLLS", SwingConstants.CENTER);
-      hello.setFont(new Font("Arial", Font.PLAIN, 75));
+      hello.setFont(new Font("Times New Roman", Font.PLAIN, 75));
       hello.setVisible(true);
       welcome.add(hello);
       JLabel start = new JLabel("Click 'Start' to play the game", SwingConstants.CENTER);

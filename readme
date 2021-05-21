@@ -10,7 +10,7 @@ They will attempt to move towards you via the shortest path, but don't take the 
 When two trolls run into each other, they clonk their heads together, and leave a corpse tile.  
 This tile is a hazard to both you and the trolls.
 If you try to run into a corpse, you will not go anywhere, while the trolls get to move towards you. 
-If a troll, or trolls, run into a corpse, they die, and get assimilated.
+If a troll, or trolls, run into a corpse, they die, and get assimilated into the corpse.
 
 Besides the trolls on the board, you will also see a blue rectangle.  This is you, the player.
 By pressing the keys "wasd", you can move the player up, left, down and right.
