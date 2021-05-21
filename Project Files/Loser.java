@@ -1,3 +1,13 @@
+//The screen you see if you get eaten, or teleport into a troll or corpse
+//Identical to the winner screen, except for color and the message in the middle.
+//Has two buttons, quit and restart
+//Quit quits, and restart changes the changeval, alerting the driver to start its loop again
+
+//Methods
+//changeCheck - returs the changeval
+
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;

@@ -1,4 +1,12 @@
-//Welcome screen for game
+//The welcome screen for the game, appears when you first run the program.  
+//Has one button, start, which swaps its "changeval"
+//This helps the driver determine if the contentpane should swap
+
+//Methods:
+//changeCheck - returns its changeval, which only get modified by the start button
+
+
+
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
@@ -44,6 +52,7 @@ public class Welcome extends JPanel{
    {
       public void actionPerformed(ActionEvent e)
       {
+         //Debugging message
          System.out.println("Boop");
          changeval = 1;
       }

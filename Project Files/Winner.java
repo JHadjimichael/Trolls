@@ -1,3 +1,13 @@
+//The screen you see if you clear the board of trolls
+//Identical to the loser screen, except for color and the message in the middle.
+//Has two buttons, quit and restart
+//Quit quits, and restart changes the changeval, alerting the driver to start its loop again
+
+//Methods
+//changeCheck - returs the changeval
+
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
@@ -45,7 +55,6 @@ public class Winner extends JPanel{
    {
       public void actionPerformed(ActionEvent e)
       {
-         //System.out.println("You pressed the Quit Buttton!");
          System.exit(0);
       }
    }
@@ -54,7 +63,6 @@ public class Winner extends JPanel{
    {
       public void actionPerformed(ActionEvent e)
       {
-         //System.out.println("You pressed the Restart Buttton!");
          changeval = 1;
       }
    } 
