@@ -1,3 +1,8 @@
+Tp access this project's gihub, go to:
+https://github.com/JHadjimichael/Trolls
+
+
+
 To start the program, either double click on the Trolls.jar file, or open up TrollDriver.java in your IDE of choice, and hit run.
 Once you start the program, a welcome screen will appear.  This screen will have the title of the game, the authors, and a start button.
 To start the game, you must either click on the start button, or hit space on your keyboard.
