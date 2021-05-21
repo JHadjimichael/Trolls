@@ -199,7 +199,7 @@ public class TrollPanel extends JPanel
    {
       public void actionPerformed(ActionEvent e)
       {
-         System.out.println("Waiting");
+         //System.out.println("Waiting");
       }
    }
    
@@ -259,7 +259,7 @@ public class TrollPanel extends JPanel
             case KeyEvent.VK_SPACE:
                result = ThePlayer.Move(board, "poo");
                break;
-            default: System.out.println("Pressed ERROR!");
+            default: //System.out.println("Pressed ERROR!");
          }
          
          updateScreen();
@@ -280,7 +280,7 @@ public class TrollPanel extends JPanel
                }
             }
          } 
-         System.out.println(Integer.toString(livetrollcount));
+         //System.out.println(Integer.toString(livetrollcount));
          if (livetrollcount == 0)
          {
             System.out.println("YOU WIN");

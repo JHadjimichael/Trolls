@@ -31,7 +31,12 @@ public class TrollDriver
          frame.getContentPane().removeAll();
          
          TrollPanel trollpanel = new TrollPanel();
+         trollpanel.requestFocus();
+         trollpanel.setVisible(true);
+         frame.toFront();
          frame.setContentPane(trollpanel);
+         frame.setVisible(true);
+         frame.pack();
          frame.revalidate();
          frame.repaint();
          while (trollpanel.changeCheck() == 0)
@@ -41,6 +46,7 @@ public class TrollDriver
          if (trollpanel.changeCheck() == 1)
          {
             Loser loser = new Loser();
+            loser.requestFocus();
             frame.setContentPane(loser);
             frame.revalidate();
             frame.repaint();
@@ -52,6 +58,7 @@ public class TrollDriver
          else if (trollpanel.changeCheck() == 2)
          {
             Winner winner = new Winner();
+            winner.requestFocus();
             frame.setContentPane(winner);
             frame.revalidate();
             frame.repaint();

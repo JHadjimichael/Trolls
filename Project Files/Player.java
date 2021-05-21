@@ -142,8 +142,6 @@ public class Player extends Block implements Entities {
             break;
       }
       int[] trollTarget = {r, c};
-      //System.out.println(Integer.toString(trollTarget[0]));
-      //System.out.println(Integer.toString(trollTarget[1]));
       Block[][] newworld = new Block[world.length][world[0].length];
       for(int i = 0; i<world.length; i++)
       {
