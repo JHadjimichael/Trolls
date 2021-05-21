@@ -2,8 +2,14 @@
 //Will move towards the player at every call.
 //If collides with another troll, both are replaced by one corpse object at the site of collision
 
+//Methods: 
+//calculate - determines where to move the troll, depending on where the player is.
+//after the direction is establishes, a simple boundscheck determines what's in the space the troll wishes to move to.
+//depending on the case, different effects happen.
+//getNum - returns the "id" of the troll block, meant to be used in the array to differentiate blocks.
+
 //Author: Jordan Hadjimichael
-//Date: 4/28/2021
+//Date: 5/20/2021
 import java.math.*;
 
 public class Troll extends Block implements Entities {
@@ -18,7 +24,6 @@ public class Troll extends Block implements Entities {
    }
    public int calculate(Block[][] newworld, int[] target)
    {
-      //System.out.println("Troll " +id+ " is at: " + " " + Integer.toString(xy[0]) + Integer.toString(xy[1]));
       int dr = 0;
       int dc = 0;
       if (xy[0] > target[0])
@@ -39,6 +44,7 @@ public class Troll extends Block implements Entities {
       }
       int r = xy[0] + dr;
       int c = xy[1] + dc;
+      //different cases
       switch (newworld[r][c].getNum())
       {
          case 0: //Empty
@@ -57,13 +63,8 @@ public class Troll extends Block implements Entities {
             break;
       }
       return 0;
-      //System.out.println("Troll is now at: " + " " + Integer.toString(r) + Integer.toString(c));
    }
    
-
-
-      
-
    public int getNum()
    {
       return 1;

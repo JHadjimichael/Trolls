@@ -1,3 +1,5 @@
+//Dead class, used for compiling.
+
 import java.math.*;
 
 public class playercoords {

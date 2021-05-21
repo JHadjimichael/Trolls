@@ -9,6 +9,7 @@ import java.io.*;
 
 public interface Entities {
 //Moves depending on context.
+//Takes a string determining the direction
    public abstract int Move(Block[][] world, String d);
 }
 

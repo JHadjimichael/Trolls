@@ -3,8 +3,18 @@
 //If the player collides with a troll, the troll movement returns a 1, and the game is over.
 //Also holds its x and y coordinates, to be fetched easily by the troll movement algorithm so the trolls know which way to move.
 
+//Methods:
+//bcheck - checks if any given move is legal, and what its effects are.
+//Move - moves the player in the array according to the string it is passed
+//the two special cases are "t" and the spacebar.  "t" teleports, and the spacebar waits.
+//After the player is moved, it creates a new array.  This array stores the new positions of trolls, after they're moved.
+//This is to get around the array reader reading a troll's new position in the original array as a new troll.
+//Move then returns its result, which specifies what happend that cycle.
+//getXY - fetches the xy coordinates of the player in the array
+//getNum - returns the "id" of the player, meant to be used in the array to differentiate blocks.
+
 //Author: Jordan Hadjimichael
-//Date: 4/28/2021
+//Date: 5/20/2021
 
 
 import java.math.*;
@@ -18,6 +28,7 @@ public class Player extends Block implements Entities {
       xy = new int[] {x, y};
       thispanel = panel;
    }
+   //Takes everything it needs to determine if the new position is legal
    public boolean bcheck(Block[][] world, int newr, int newc)
    {
       if (newr < 0 || newr >= world.length
@@ -42,7 +53,7 @@ public class Player extends Block implements Entities {
       int[] origcoords = {xy[0], xy[1]};
       switch(d)
       {
-         case "n": //System.out.println("Moved the player up");
+         case "n": //up
             if (bcheck(world, r-1, c))
             {
                world[r][c] = new Block();
@@ -51,7 +62,7 @@ public class Player extends Block implements Entities {
                world[r][c] = this;
             }
             break;
-         case "s": //System.out.println("Moved the player down");
+         case "s": //down
             if (bcheck(world, r+1, c))
             {
                world[r][c] = new Block();
@@ -60,7 +71,7 @@ public class Player extends Block implements Entities {
                world[r][c] = this;
             }
             break;
-         case "e": //System.out.println("Moved the player to the right");
+         case "e": //right
             if (bcheck(world, r, c+1))
             {
                world[r][c] = new Block();
@@ -69,7 +80,7 @@ public class Player extends Block implements Entities {
                world[r][c] = this;
             }
             break;
-         case "w": //System.out.println("Moved the player to the left");
+         case "w": //left
             if (bcheck(world, r, c-1))
             {
                world[r][c] = new Block();
@@ -78,7 +89,7 @@ public class Player extends Block implements Entities {
                world[r][c] = this;
             }
             break;
-         case "nw": 
+         case "nw": //up and left
             if (bcheck(world, r-1, c-1))
             {
                world[r][c] = new Block();
@@ -89,7 +100,7 @@ public class Player extends Block implements Entities {
                world[r][c] = this;
             }
             break;
-         case "ne": 
+         case "ne": //up and right
             if (bcheck(world, r-1, c+1))
             {
                world[r][c] = new Block();
@@ -100,7 +111,7 @@ public class Player extends Block implements Entities {
                world[r][c] = this;
             }
             break;
-         case "sw": 
+         case "sw": //down and left
             if (bcheck(world, r+1, c-1))
             {
                world[r][c] = new Block();
@@ -111,7 +122,7 @@ public class Player extends Block implements Entities {
                world[r][c] = this;
             }
             break;
-         case "se": 
+         case "se": //down and right
             if (bcheck(world, r+1, c+1))
             {
                world[r][c] = new Block();
@@ -122,7 +133,7 @@ public class Player extends Block implements Entities {
                world[r][c] = this;
             }
             break;
-         case "t":
+         case "t": //teleports
             Random rand = new Random();
             world[r][c] = new Block();
             r = rand.nextInt(world.length);
@@ -138,10 +149,11 @@ public class Player extends Block implements Entities {
                result = 1;
             }
             break;
-         case "poo":
+         case "poo": //waits, with a immature variable name 
             break;
       }
       int[] trollTarget = {r, c};
+      //creates and initializes the new array
       Block[][] newworld = new Block[world.length][world[0].length];
       for(int i = 0; i<world.length; i++)
       {
@@ -150,6 +162,7 @@ public class Player extends Block implements Entities {
             newworld[i][a] = new Block();
          }
       }
+      
       newworld[xy[0]][xy[1]] = this;
       
       for (int a = 0; a<world.length; a++)
@@ -159,6 +172,7 @@ public class Player extends Block implements Entities {
             switch(world[a][b].getNum())
             {
                case 1: 
+                  //sets result
                   result += world[a][b].calculate(newworld, trollTarget);
                   break;
                case 3: 
@@ -167,6 +181,7 @@ public class Player extends Block implements Entities {
             }
          }
       }
+      //copies over the newworld onto the old one
       for (int a = 0; a<world.length; a++)
       {
          for (int b = 0; b<world[0].length; b++)

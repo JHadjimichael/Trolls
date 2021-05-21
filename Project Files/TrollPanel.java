@@ -6,8 +6,18 @@
 //The TrollPanel then creates a button, for now just using a name.  This button is quit.
 //Finally the TrollPanel binds and sets the handler and listener for the keypresses that control the player.
 
+//Methods:
+//setTitle - set the title JLabel to whatever is given as the argument
+//initialize - creates an empty block array of arrays of size R and C
+//creatents - randomly scatters trolls around the array, and makes sure there are no overlaps.  Also tags each troll with a number
+//createButtons - creates an invisible quit button, which doesn't actually quit.  It acts as the focused component for the keylistener
+//drawScreen - runs through the array and creates JButton for each place in it.  
+//updateScreen - Sets the backgrounds of the buttons 
+//movement - adds the listener to quit
+//fininit - debugging method to notify when initilization of the board is finished.
+
 //Author: Jordan Hadjimichael
-//Date: 4/28/2021
+//Date: 5/20/2021
 
 
 import javax.swing.*;
@@ -31,40 +41,33 @@ public class TrollPanel extends JPanel
    
    public TrollPanel()
    {  
-      
-      //Set Title
       setTitle("Trolls");
-      
-      //Initialize board and graphics
+     
       initialize();
       
-      //Create entities
       createents(board);
       
-      //Define Buttons
       createbuttons("Quit");
       
-      //Define Movement Keys
       draw_screen();
-      
       
       updateScreen();
       
       movement();
       
       fininit();
-      
    }
+   //Dead handler, used to keep the button listeners assigned properly
    private class Handler implements ActionListener
    {
       public void actionPerformed(ActionEvent e)
       {
-      	//Quit Button
+      	
       }
    }
+   //Empty array of arrays of blocks
    private void initialize()
    {
-      //Initializes the array. Returns -1 to compile.
       board = new Block[R][C];
       
       for(int i = 0; i<R; i++)
@@ -76,6 +79,7 @@ public class TrollPanel extends JPanel
       }
       
    }
+   //randomly generates places to put trolls then check before putting them there.  Has a troll count so you can adjust difficulty.
    private void createents(Block[][] board)
    {
       Random rand = new Random();
@@ -108,16 +112,8 @@ public class TrollPanel extends JPanel
          }
       }
       
-      /*for (int a = 0; a<R; a++)
-      {
-         for (int b = 0; b<C; b++)
-         {
-            System.out.print(board[a][b].getNum());
-         }
-         System.out.println(" ");
-      }*/
    }
-      
+   //Creates the ghostbutton   
    private void createbuttons(String name)
    {
       JPanel bottom = new JPanel();
@@ -129,6 +125,7 @@ public class TrollPanel extends JPanel
       quit.setVisible(true);
    }
    
+   //Adds buttons equal to the amound of slot in the array of arrays
    private void draw_screen()
    {
       setLayout(new BorderLayout());
@@ -149,7 +146,7 @@ public class TrollPanel extends JPanel
             center.add(graphic[r][c]);
          }
    }
-   
+   //colors the buttons apropriatly
    private void updateScreen()
    {
       for(int r = 0; r < R; r++)
@@ -168,6 +165,7 @@ public class TrollPanel extends JPanel
             }
          }
    }
+   //sets coords, a dead variable, and adds the apropriate listeners to quit
    private void movement()
    {
       for (int a = 0; a<R; a++)
@@ -182,27 +180,32 @@ public class TrollPanel extends JPanel
          }
       }
       quit.addKeyListener(new KeyListener1());
+      quit.setFocusable(true);
+      quit.requestFocus();
+      quit.repaint();
    }
+   //prints finished message
    private void fininit()
    {
       System.out.println("Finished initialization");
    }
    
    
-   
+   //Sets title
    private void setTitle(String name)
    {
       title = new JLabel(name);
    }
    
+   //Dead handler, used to keep the button listeners assigned properly
    private class Handler2 implements ActionListener
    {
       public void actionPerformed(ActionEvent e)
       {
-         //System.out.println("Waiting");
+         //empty
       }
    }
-   
+   //Dead handler, used to keep the button listeners assigned properly
    private class Handler1 implements ActionListener
    {
       private int myRow, myCol;
@@ -216,6 +219,8 @@ public class TrollPanel extends JPanel
       
       }
    }
+   //The meat of the panel.  Drives all actions after initialization.
+   //Takes keypresses, and convertes them to strings to feed to the player.
    private class KeyListener1 implements KeyListener
    {
       int result = -1;
@@ -259,11 +264,12 @@ public class TrollPanel extends JPanel
             case KeyEvent.VK_SPACE:
                result = ThePlayer.Move(board, "poo");
                break;
-            default: //System.out.println("Pressed ERROR!");
+            default: System.out.println("Invalid Key");
          }
-         
+         //updates the sceen after movement
          updateScreen();
          
+         //checks the moves results
          if (result > 0)
          {
             System.out.println("GAME OVER");
@@ -280,7 +286,7 @@ public class TrollPanel extends JPanel
                }
             }
          } 
-         //System.out.println(Integer.toString(livetrollcount));
+         
          if (livetrollcount == 0)
          {
             System.out.println("YOU WIN");
@@ -288,27 +294,18 @@ public class TrollPanel extends JPanel
          }
          
       }
+      
       public void keyTyped(KeyEvent event)
       {
-        /* switch(event.getKeyCode())
-         {
-            case KeyEvent.VK_UP: System.out.println("Pressed Up!");
-               break;
-            case KeyEvent.VK_DOWN: System.out.println("Pressed Down!");
-               break;
-            case KeyEvent.VK_LEFT: System.out.println("Pressed Left!");
-               break;
-            case KeyEvent.VK_RIGHT: System.out.println("Pressed Right!");
-               break;
-            default: System.out.println("Pressed ERROR!");
-         }*/
+        //neccesary for the actionlistener interface
       }
       public void keyReleased(KeyEvent event)
       {
-         //Empty
+         //neccesary for the actionlistener interface
       }
       
    }
+   //checks if the screen needs to be changed
    public int changeCheck()
    {
       return changeval;

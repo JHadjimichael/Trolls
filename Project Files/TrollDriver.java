@@ -2,6 +2,12 @@
 //It sets the panel to the TrollPanel, which is the main controller of the program.
 //Also sets window attribute to be non-scaleable, since the size will be set upon launch, and resizing the window could mess up the gui.
 
+//Methods:
+//main - sets all frame attributes, then the contentPane to the welcome screen. Has a while statement checking for a button press in welcome.
+//once welcome button is pressed, the content pane is changed to a trollpanel, and everything is refreshed. 
+//after a change has been detected from trollpanel, the contentpane is set to either loser or winner, depending on the result
+//after a buttonpress from loser or winner, the game is restarted
+
 //Author: Jordan Hadjimichael
 //Date: 4/28/2021
 
@@ -10,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 import java.awt.event.KeyAdapter;              
 import java.awt.event.KeyEvent;
+import java.awt.Robot;
 public class TrollDriver
 {
    public static void main(String[] args) throws Exception
@@ -31,17 +38,21 @@ public class TrollDriver
          frame.getContentPane().removeAll();
          
          TrollPanel trollpanel = new TrollPanel();
-         trollpanel.requestFocus();
-         trollpanel.setVisible(true);
-         frame.toFront();
+      
          frame.setContentPane(trollpanel);
+      
+         trollpanel.setVisible(true);
+      
          frame.setVisible(true);
-         frame.pack();
-         frame.revalidate();
-         frame.repaint();
+         
+         //Very strange.  The trollpanel would not recognize keypresses until the cursor had been moved out of, then into the frame.  
+         //This creates a little robot which moves the cursor to the top left of the screen, forcing the panel to accept keypresses after it is moved back in.
+         //A litle bit of a cheat, but the only solution that worked. (Except in fullscreen)
+         Robot r = new Robot();
+         r.mouseMove(0,0);
          while (trollpanel.changeCheck() == 0)
          {
-            Thread.sleep(1000);
+            Thread.sleep(100);
          }
          if (trollpanel.changeCheck() == 1)
          {

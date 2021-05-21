@@ -4,8 +4,13 @@
 //In the array which represents the world, every space is a Block
 //In the graphics this is displayed as a white box with a black outline, creating the grid pattern.
 
+//Methods:
+//Move - An empty move which doesn't do anything. Neccessary for compiling and debugging.
+//getNum - returns the "id" of the block, meant to be used in the array to differentiate blocks.
+//Calculate - Empty, neccessary for compiling
+
 //Author: Jordan Hadjimichael
-//Date: 4/28/2021
+//Date: 5/20/2021
 
 import java.math.*;
 
@@ -25,7 +30,7 @@ public class Block {
    } 
    public int calculate(Block[][] world, int[] target)
    {
-      System.out.println("A block moved?");
+      System.out.println("A block calculated, thinking of the possibilities, and the reason for its existence.");
       return 0;
    }
 }

@@ -3,8 +3,11 @@
 //When run into by Troll or Player alike, the entity which moved into it is killed.
 //It does not have movement
 
+//Method:
+//getNum - returns the "id" of the corpse, meant to be used in the array to differentiate blocks.
+
 //Author: Jordan Hadjimichael
-//Date: 4/28/2021
+//Date: 5/20/2021
 
 
 public class Corpse extends Block {
